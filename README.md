@@ -7,10 +7,3 @@ ___
 5. **Installing requirements.txt**
 
         pip install -r requirements.txt
-
-## test
-
-
-::: callout-green
-*testu adnja*
-:::
