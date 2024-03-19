@@ -22,6 +22,9 @@ class Author(Base):
 
     news = relationship("News", back_populates="author")
 
+    def __str__(self):
+        return self.username
+
 
 class Category(Base):
     __tablename__ = 'categories'
@@ -29,6 +32,9 @@ class Category(Base):
     name = Column(String(200), unique=True)
 
     news = relationship("News", back_populates="categories")
+
+    def __str__(self):
+        return self.name
 
 
 class News(Base):
@@ -45,4 +51,5 @@ class News(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow)
 
-
+    def __str__(self):
+        return self.title
