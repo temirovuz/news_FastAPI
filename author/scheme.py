@@ -6,6 +6,6 @@ class AuthorScheme(BaseModel):
     email: str
     password: str
 
-    class Config:
-        orm_mode = True
+    # class Config:
+    #     orm_mode = True
 
