@@ -1,7 +1,11 @@
 from fastapi import APIRouter
 
+from category.scheme import CategoryViewScheme, CategoryScheme
+
 app = APIRouter()
 
-@app.get('/')
-def read_root():
-    return {'message': 'hello world'}
+
+@app.post('/create_category')
+def read_root(name: CategoryScheme):
+
+    return name

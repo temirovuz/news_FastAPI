@@ -7,3 +7,6 @@ class CategoryScheme(BaseModel):
     # class Config:
     #     orm_mode = True
 
+class CategoryViewScheme(BaseModel):
+    id: int
+    name: str
