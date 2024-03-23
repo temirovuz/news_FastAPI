@@ -15,7 +15,7 @@ SessionLocal = sessionmaker(bind=engine)
 
 class Author(Base):
     __tablename__ = 'author'
-    id = Column(BigInteger, primary_key=True, unique=True)
+    id = Column(BigInteger, primary_key=True)
     username = Column(String(150), primary_key=True)
     email = Column(String)
     password = Column(String(50))
@@ -31,7 +31,7 @@ class Category(Base):
     id = Column(BigInteger, primary_key=True)
     name = Column(String(200), unique=True)
 
-    news = relationship("News", back_populates="categories")
+    news = relationship("News", backref="categories")
 
     def __str__(self):
         return self.name
@@ -44,12 +44,13 @@ class News(Base):
     description = Column(String)
     # Category ForeignKey
     category_id = Column(BigInteger, ForeignKey('categories.id'))
-    category = relationship("Category", back_populates="news")
     # Author ForeignKey
     author_id = Column(BigInteger, ForeignKey('author.id'))
-    author = relationship('Author', back_populates='news')
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow)
+
+    category = relationship("Category", back_populates="news")
+    author = relationship('Author', back_populates='news')
 
     def __str__(self):
         return self.title
