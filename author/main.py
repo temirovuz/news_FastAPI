@@ -24,7 +24,7 @@ def read_root(author: AuthorScheme, db: Session = Depends(get_db)):
     return authors
 
 
-@app.get('/read_author')
-def read_author(authors:AuthorViewScheme, db: Session = Depends(get_db)):
+@app.get('/read_author', response_model=AuthorViewScheme)
+def read_author(db: Session = Depends(get_db)):
     author = db.query(Author).all()
     return author
